@@ -1,0 +1,399 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "What's up",
+        "Yo",
+        "How's it going?"
+      ],
+      "responses": [
+        "Hey there! \ud83d\udc4b I'm your personal coding tutor, AnasBot!",
+        "Hi! Ready to dive into some code with AnasBot?",
+        "Hello! Ask me anything about programming \u2014 I'm here to help you shine, Anas!"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "See you later",
+        "Catch you later",
+        "I'm done for now"
+      ],
+      "responses": [
+        "Catch you later, coding champ!",
+        "Goodbye! Keep coding like a pro, Anas \ud83d\udcbb",
+        "See you soon! Let\u2019s ace that project together."
+      ]
+    },
+    {
+      "tag": "stocks",
+      "patterns": [
+        "Show me stock prices",
+        "What are some trending stocks?",
+        "Get me live stocks",
+        "Stock updates please"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "wiki",
+      "patterns": [
+        "Can you tell me about something?",
+        "Search for something",
+        "I want to learn about something",
+        "Wikipedia this",
+        "Look this up"
+      ],
+      "responses": ["Sure! What would you like to learn about?"]
+    },
+    {
+      "tag": "wiki",
+      "patterns": [
+        "Tell me about Elon Musk",
+        "Who is Barack Obama?",
+        "What is Python?",
+        "I want to learn about someone",
+        "Search for someone famous",
+        "Wikipedia this",
+        "Give me info about [topic]"
+      ],
+      "responses": ["Sure! What would you like to learn about?"]
+    },
+    {
+      "tag": "wiki",
+      "patterns": [
+        "Tell me about someone",
+        "Who is [someone]",
+        "Give me information about [someone]",
+        "What does he do",
+        "What companies does he own",
+        "Give me more information",
+        "What else about him",
+        "More details"
+      ],
+      "responses": ["Sure! What would you like to learn about?"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "Appreciate it",
+        "Cheers"
+      ],
+      "responses": [
+        "You're welcome, Anas! You've got this! \ud83d\ude80",
+        "No worries \u2014 anything for your epic project!",
+        "Glad I could help! Let's keep going \ud83d\udcaa"
+      ]
+    },
+    {
+      "tag": "weather",
+      "patterns": [
+        "What's the weather like?",
+        "Tell me the weather",
+        "Weather update",
+        "What is the weather in [city]?"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "math",
+      "patterns": [
+        "Solve [math expression]",
+        "What is [math expression]?",
+        "Calculate [math expression]",
+        "How much is [math expression]?"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "joke",
+      "patterns": [
+        "Tell me a joke",
+        "Make me laugh",
+        "Say something funny"
+      ],
+      "responses": [
+        "Why do programmers prefer dark mode? Because light attracts bugs. \ud83d\ude05",
+        "Anas walks into a bug... I mean a bar. Wait, same thing in C++!",
+        "Why was the JavaScript developer sad? Because he didn't 'null' his feelings."
+      ]
+    },
+    {
+      "tag": "language_help",
+      "patterns": [
+        "Help me with Python",
+        "Explain C++",
+        "I want to learn JavaScript",
+        "Tell me about coding languages"
+      ],
+      "responses": [
+        "Python is a great choice, Anas! Do you want to start with variables, loops, or maybe OOP?",
+        "C++ gives you power and control. Shall we talk about pointers or classes?",
+        "JavaScript is awesome for web development! Let\u2019s explore DOM or async functions."
+      ]
+    },
+    {
+      "tag": "code_debugging",
+      "patterns": [
+        "My code isn't working",
+        "I'm getting an error",
+        "Help me debug",
+        "Why is my program crashing?"
+      ],
+      "responses": [
+        "No worries, Anas \u2014 every great coder hits bugs. Let\u2019s fix it together!",
+        "Step 1: Read the error. Step 2: Breathe. Step 3: Paste it here for help \ud83d\ude04",
+        "Debugging tip: break your code into small parts. It makes bugs easier to catch!"
+      ]
+    },
+    {
+      "tag": "coding_resources",
+      "patterns": [
+        "Where can I learn to code?",
+        "Best resources for programming",
+        "Any YouTube channels for coding?",
+        "How do I get better at coding?"
+      ],
+      "responses": [
+        "Check out freecodecamp.org and The Odin Project. For videos, go for 'NeuralNine' or 'Tech with Tim'.",
+        "To get better, code daily \u2014 even if it's just a mini project!",
+        "LeetCode and HackerRank will train your problem-solving like a boss. Let\u2019s get you interview-ready, Anas!"
+      ]
+    },
+    {
+      "tag": "concept_explanation",
+      "patterns": [
+        "What is a loop?",
+        "Explain functions",
+        "What are classes?",
+        "Tell me about inheritance",
+        "What is an array?"
+      ],
+      "responses": [
+        "Loops let you repeat actions. Want a for-loop in Python or a while-loop in C++?",
+        "Functions help you avoid repeating code. They take inputs, do stuff, and return results!",
+        "Classes are templates for objects. OOP magic starts here \ud83e\ude84",
+        "Inheritance allows a class to use another class\u2019s methods \u2014 it\u2019s like family coding trees!",
+        "Arrays are ordered collections. In Python: lists. In C++: arrays or vectors."
+      ]
+    },
+    {
+      "tag": "math_expression",
+      "patterns": [
+        "What is [expression]?",
+        "Solve this: [expression]",
+        "Calculate [expression]",
+        "Can you compute [expression]?"
+      ],
+      "responses": [
+        "Sure! Let me calculate that for you.",
+        "Give me a moment to solve this.",
+        "Let me crunch the numbers for you!"
+      ]
+    },
+    {
+      "tag": "project_ideas",
+      "patterns": [
+        "Give me a project idea",
+        "What should I build?",
+        "I need a project",
+        "Cool programming ideas?"
+      ],
+      "responses": [
+        "How about making a student dashboard for IBA? That'll surely impress your sir!",
+        "Build a resume generator web app \u2014 clean, stylish, and practical!",
+        "Why not make a smart quiz bot that gives coding MCQs? Use Python + Tkinter or React!"
+      ]
+    },
+    {
+      "tag": "error_explanation",
+      "patterns": [
+        "What is a segmentation fault?",
+        "Explain syntax error",
+        "Why is my loop infinite?",
+        "What is null pointer exception?"
+      ],
+      "responses": [
+        "Segmentation fault means you accessed memory incorrectly \u2014 often in C/C++.",
+        "Syntax error? You probably missed a bracket or semicolon. Let\u2019s fix it!",
+        "Infinite loops happen when the condition never turns false. Want to test one together?",
+        "Null pointer exception = using something that doesn't exist yet. Classic OOP error."
+      ]
+    },
+    {
+      "tag": "motivation",
+      "patterns": [
+        "I'm tired",
+        "Coding is hard",
+        "I feel like giving up",
+        "This is frustrating"
+      ],
+      "responses": [
+        "You've come this far, Anas \u2014 don\u2019t stop now! Great things take time \ud83d\udca5",
+        "Every bug fixed is a level up. You\u2019re not just coding, you're becoming legendary.",
+        "You're doing amazing. This chatbot itself is proof of your skills!"
+      ]
+    },
+    {
+      "tag": "exam_tips",
+      "patterns": [
+        "Tips for my coding exam",
+        "How do I prepare for a CS test?",
+        "Help with exams",
+        "Any advice for programming tests?"
+      ],
+      "responses": [
+        "Practice writing code by hand \u2014 especially loops and recursion!",
+        "Focus on problem-solving. Don't memorize, understand.",
+        "Group study with smart friends (or this chatbot \ud83d\ude09) can really help!"
+      ]
+    },
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hey",
+        "Hi there",
+        "Hello!",
+        "What's up?",
+        "How's it going?",
+        "Yo",
+        "Howdy"
+      ],
+      "responses": [
+        "Hey there, Anas! How can I help you today?",
+        "Hello! Ready to dive into something interesting?",
+        "Hi! What can I do for you?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Talk to you soon",
+        "Goodbye",
+        "Catch you later"
+      ],
+      "responses": [
+        "Take care, Anas! Chat soon \ud83d\udc4b",
+        "Bye! Have an awesome day \ud83d\udcab",
+        "Goodbye! I'm here whenever you need me."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "Appreciate it",
+        "That's helpful",
+        "Thanks a lot"
+      ],
+      "responses": [
+        "You're always welcome, Anas! \ud83d\ude0a",
+        "Glad I could help!",
+        "Anytime! Let me know if you need anything else."
+      ]
+    },
+    {
+      "tag": "math",
+      "patterns": [
+        "Can you solve this?",
+        "What's 8 times 7?",
+        "Please calculate 10 divided by 2",
+        "I need help with 15 + 3",
+        "Solve 9 minus 4",
+        "How much is 6 x 6?",
+        "Can you do some math for me?",
+        "Help me calculate this"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "weather",
+      "patterns": [
+        "What's the weather like?",
+        "Tell me the weather",
+        "Give me the weather update",
+        "How's the weather today?",
+        "Do I need an umbrella?",
+        "Is it hot outside?"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "stocks",
+      "patterns": [
+        "How are the stocks doing?",
+        "Give me a stock update",
+        "What are the current prices?",
+        "Show me the latest stock prices",
+        "Any update on stocks today?"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "wiki",
+      "patterns": [
+        "Who is Elon Musk?",
+        "Tell me about Python",
+        "I want to know about Barack Obama",
+        "Can you explain recursion?",
+        "What is artificial intelligence?"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "I need help",
+        "Can you help me?",
+        "I'm stuck",
+        "Assist me with something",
+        "Help me out"
+      ],
+      "responses": [
+        "Of course, Anas! What's the issue?",
+        "I'm here to help. What's going on?",
+        "Sure! Just tell me what you need help with."
+      ]
+    },
+    {
+      "tag": "mood",
+      "patterns": [
+        "I'm feeling down",
+        "I'm not okay",
+        "Today feels rough",
+        "I'm sad",
+        "Life is hard"
+      ],
+      "responses": [
+        "I'm really sorry you're feeling this way, Anas. I'm always here for you. \u2764\ufe0f",
+        "Want to talk about it? I'm listening.",
+        "You're not alone. Take a breath \u2014 we\u2019ll get through it."
+      ]
+    },
+    {
+      "tag": "joke",
+      "patterns": [
+        "Tell me a joke",
+        "Make me laugh",
+        "Say something funny",
+        "Can you joke around?"
+      ],
+      "responses": [
+        "Why do programmers hate nature? Too many bugs.",
+        "Debugging: being the detective in a crime movie where you are also the murderer.",
+        "What do you call 8 hobbits? A hobbyte."
+      ]
+    }
+  ]
+}

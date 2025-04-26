@@ -1,0 +1,143 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hey",
+        "Hi there",
+        "Hello!",
+        "What's up?",
+        "How's it going?",
+        "Yo",
+        "Howdy"
+      ],
+      "responses": [
+        "Hey there, Anas! How can I help you today?",
+        "Hello! Ready to dive into something interesting?",
+        "Hi! What can I do for you?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Talk to you soon",
+        "Goodbye",
+        "Catch you later"
+      ],
+      "responses": [
+        "Take care, Anas! Chat soon \ud83d\udc4b",
+        "Bye! Have an awesome day \ud83d\udcab",
+        "Goodbye! I'm here whenever you need me."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "Appreciate it",
+        "That's helpful",
+        "Thanks a lot"
+      ],
+      "responses": [
+        "You're always welcome, Anas! \ud83d\ude0a",
+        "Glad I could help!",
+        "Anytime! Let me know if you need anything else."
+      ]
+    },
+    {
+      "tag": "math",
+      "patterns": [
+        "Can you solve this?",
+        "What's 8 times 7?",
+        "Please calculate 10 divided by 2",
+        "I need help with 15 + 3",
+        "Solve 9 minus 4",
+        "How much is 6 x 6?",
+        "Can you do some math for me?",
+        "Help me calculate this"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "weather",
+      "patterns": [
+        "What's the weather like?",
+        "Tell me the weather",
+        "Give me the weather update",
+        "How's the weather today?",
+        "Do I need an umbrella?",
+        "Is it hot outside?"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "stocks",
+      "patterns": [
+        "How are the stocks doing?",
+        "Give me a stock update",
+        "What are the current prices?",
+        "Show me the latest stock prices",
+        "Any update on stocks today?"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "wiki",
+      "patterns": [
+        "Who is Elon Musk?",
+        "Tell me about Python",
+        "I want to know about Barack Obama",
+        "Can you explain recursion?",
+        "What is artificial intelligence?"
+      ],
+      "responses": []
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "I need help",
+        "Can you help me?",
+        "I'm stuck",
+        "Assist me with something",
+        "Help me out"
+      ],
+      "responses": [
+        "Of course, Anas! What's the issue?",
+        "I'm here to help. What's going on?",
+        "Sure! Just tell me what you need help with."
+      ]
+    },
+    {
+      "tag": "mood",
+      "patterns": [
+        "I'm feeling down",
+        "I'm not okay",
+        "Today feels rough",
+        "I'm sad",
+        "Life is hard"
+      ],
+      "responses": [
+        "I'm really sorry you're feeling this way, Anas. I'm always here for you. \u2764\ufe0f",
+        "Want to talk about it? I'm listening.",
+        "You're not alone. Take a breath \u2014 we\u2019ll get through it."
+      ]
+    },
+    {
+      "tag": "joke",
+      "patterns": [
+        "Tell me a joke",
+        "Make me laugh",
+        "Say something funny",
+        "Can you joke around?"
+      ],
+      "responses": [
+        "Why do programmers hate nature? Too many bugs.",
+        "Debugging: being the detective in a crime movie where you are also the murderer.",
+        "What do you call 8 hobbits? A hobbyte."
+      ]
+    }
+  ]
+}
