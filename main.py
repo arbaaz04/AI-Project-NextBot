@@ -1,4 +1,3 @@
-#test
 import spacy
 import os
 os.environ['http_proxy'] = ''
@@ -65,6 +64,9 @@ class ChatbotAssistant:
             self.y = None
             self.vectorizer = TfidfVectorizer()
             self.last_topic_candidate = None
+            self.user_name = None # Variable to store the user's name
+            # Load the spaCy model for NER
+            self.nlp = spacy.load("en_core_web_md")
 
     @staticmethod
     def tokenize_and_lemmatize(text):
@@ -182,14 +184,38 @@ class ChatbotAssistant:
             cleaned = input_message.lower().replace("who is", "").replace("tell me about", "").replace("what is", "").strip()
             self.last_topic_candidate = cleaned
 
+        # Perform NER on the input message
+        doc = self.nlp(input_message)
+
+        # Store user's name if identified and not already stored
+        if doc.ents and self.user_name is None:
+            for ent in doc.ents:
+                if ent.label_ == "PERSON":
+                    self.user_name = ent.text
+                    break # Assume the first PERSON entity is the user's name
+
         if self.function_mappings and predicted_intent in self.function_mappings:
-            return self.function_mappings[predicted_intent]()
+            # Return the result of the function mapping and the identified entities
+            return self.function_mappings[predicted_intent](), doc.ents
 
         if self.intents_responses[predicted_intent]:
-            return random.choice(self.intents_responses[predicted_intent])
+            # Return a random response from intents and the identified entities
+            return random.choice(self.intents_responses[predicted_intent]), doc.ents
         else:
-            return None
-        
+            # Return None response and the identified entities
+            return None, doc.ents
+
+        # Print the identified entities
+        if doc.ents:
+            print("Identified Entities:")
+            for ent in doc.ents:
+                print(f"  - {ent.text} ({ent.label_})")
+        # else:
+        #     print("No entities identified.") # Optional: uncomment to see when no entities are found
+
+        # Return the response and the identified entities
+        return response, doc.ents
+
 def get_stocks():
     tickers = ['AAPL', 'META', 'NVDA', 'MSFT', 'GOOGL']
     stock_data = yf.download(tickers, period="1d", interval="1d")
@@ -295,10 +321,54 @@ if __name__ == '__main__':
             wiki_mode = False
             continue
 
-        response = assistant.process_message(message)
+        response, entities = assistant.process_message(message)
 
-        if response == "__wiki__":
+        # --- Using identified entities to improve responses ---
+        modified_response = response # Start with the original response
+
+        if entities:
+            # Example: If a PERSON entity is found, try to include it in the response
+            for ent in entities:
+                if ent.label_ == "PERSON":
+                    # This is a very basic example. More sophisticated logic would be needed
+                    # to integrate the entity naturally into different response types.
+                    if response and response != "__wiki__": # Avoid modifying function call responses
+                         modified_response = f"Okay, I can tell you about {ent.text}. " + response
+                    break # Only use the first PERSON entity found for this example
+
+            # You can add more conditions here to handle other entity types (ORG, GPE, DATE, etc.)
+            # and modify the response accordingly.
+
+        # --- End of using identified entities ---
+
+
+        if modified_response == "__wiki__":
             wiki_mode = True
             print("🧠 Sure! What would you like to learn about?")
+        elif modified_response:
+            # --- Fill entity placeholders in the response ---
+            final_response = modified_response
+            if entities:
+                for ent in entities:
+                    placeholder = f"[{ent.label_}]"
+                    # Replace the first occurrence of the specific entity type placeholder
+                    if placeholder in final_response:
+                        final_response = final_response.replace(placeholder, ent.text, 1)
+                    # Also handle a generic [ENTITY] placeholder
+                    elif "[ENTITY]" in final_response:
+                         final_response = final_response.replace("[ENTITY]", ent.text, 1)
+                    # Handle [TOPIC] placeholder (used in language_help example)
+                    elif "[TOPIC]" in final_response and ent.label_ in ["LANGUAGE", "SKILL", "TOPIC"]: # Add relevant labels here
+                         final_response = final_response.replace("[TOPIC]", ent.text, 1)
+
+
+            # --- End of filling placeholders ---
+
+            # Replace hardcoded "Anas" with the identified user name if available
+            if assistant.user_name:
+                final_response = final_response.replace("Anas", assistant.user_name)
+
+            print(final_response)
         else:
-            print(response)
+            # Handle cases where the original response was None and no entities led to a modification
+            print("I'm not sure how to respond to that.")

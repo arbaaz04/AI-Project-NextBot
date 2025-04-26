@@ -11,9 +11,9 @@
         "How's it going?"
       ],
       "responses": [
-        "Hey there! \ud83d\udc4b I'm your personal coding tutor, AnasBot!",
+        "Hey there! 👋 I'm your personal coding tutor, AnasBot!",
         "Hi! Ready to dive into some code with AnasBot?",
-        "Hello! Ask me anything about programming \u2014 I'm here to help you shine, Anas!"
+        "Hello! Ask me anything about programming — I'm here to help you shine, Anas!"
       ]
     },
     {
@@ -27,8 +27,8 @@
       ],
       "responses": [
         "Catch you later, coding champ!",
-        "Goodbye! Keep coding like a pro, Anas \ud83d\udcbb",
-        "See you soon! Let\u2019s ace that project together."
+        "Goodbye! Keep coding like a pro, Anas 💻",
+        "See you soon! Let’s ace that project together."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Wikipedia this",
         "Give me info about [topic]"
       ],
-      "responses": ["Sure! What would you like to learn about?"]
+      "responses": ["Sure! I can tell you about [PERSON].", "Sure! I can tell you about [ORG].", "Sure! What would you like to learn about [ENTITY]?"]
     },
     {
       "tag": "wiki",
@@ -77,7 +77,7 @@
         "What else about him",
         "More details"
       ],
-      "responses": ["Sure! What would you like to learn about?"]
+      "responses": ["Sure! I can provide information on [PERSON].", "What specifically about [PERSON] are you interested in?"]
     },
     {
       "tag": "thanks",
@@ -88,9 +88,9 @@
         "Cheers"
       ],
       "responses": [
-        "You're welcome, Anas! You've got this! \ud83d\ude80",
-        "No worries \u2014 anything for your epic project!",
-        "Glad I could help! Let's keep going \ud83d\udcaa"
+        "You're welcome, Anas! You've got this! 🚀",
+        "No worries — anything for your epic project!",
+        "Glad I could help! Let's keep going 💪"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Say something funny"
       ],
       "responses": [
-        "Why do programmers prefer dark mode? Because light attracts bugs. \ud83d\ude05",
+        "Why do programmers prefer dark mode? Because light attracts bugs. 😂",
         "Anas walks into a bug... I mean a bar. Wait, same thing in C++!",
         "Why was the JavaScript developer sad? Because he didn't 'null' his feelings."
       ]
@@ -135,9 +135,9 @@
         "Tell me about coding languages"
       ],
       "responses": [
-        "Python is a great choice, Anas! Do you want to start with variables, loops, or maybe OOP?",
+        "[TOPIC] is a great choice, Anas! Do you want to start with variables, loops, or maybe OOP?",
         "C++ gives you power and control. Shall we talk about pointers or classes?",
-        "JavaScript is awesome for web development! Let\u2019s explore DOM or async functions."
+        "JavaScript is awesome for web development! Let’s explore DOM or async functions."
       ]
     },
     {
@@ -149,8 +149,8 @@
         "Why is my program crashing?"
       ],
       "responses": [
-        "No worries, Anas \u2014 every great coder hits bugs. Let\u2019s fix it together!",
-        "Step 1: Read the error. Step 2: Breathe. Step 3: Paste it here for help \ud83d\ude04",
+        "No worries, Anas — every great coder hits bugs. Let’s fix it together!",
+        "Step 1: Read the error. Step 2: Breathe. Step 3: Paste it here for help 😉",
         "Debugging tip: break your code into small parts. It makes bugs easier to catch!"
       ]
     },
@@ -164,8 +164,8 @@
       ],
       "responses": [
         "Check out freecodecamp.org and The Odin Project. For videos, go for 'NeuralNine' or 'Tech with Tim'.",
-        "To get better, code daily \u2014 even if it's just a mini project!",
-        "LeetCode and HackerRank will train your problem-solving like a boss. Let\u2019s get you interview-ready, Anas!"
+        "To get better, code daily — even if it's just a mini project!",
+        "LeetCode and HackerRank will train your problem-solving like a boss. Let’s get you interview-ready, Anas!"
       ]
     },
     {
@@ -180,8 +180,8 @@
       "responses": [
         "Loops let you repeat actions. Want a for-loop in Python or a while-loop in C++?",
         "Functions help you avoid repeating code. They take inputs, do stuff, and return results!",
-        "Classes are templates for objects. OOP magic starts here \ud83e\ude84",
-        "Inheritance allows a class to use another class\u2019s methods \u2014 it\u2019s like family coding trees!",
+        "Classes are templates for objects. OOP magic starts here 🦄",
+        "Inheritance allows a class to use another class’s methods — it’s like family coding trees!",
         "Arrays are ordered collections. In Python: lists. In C++: arrays or vectors."
       ]
     },
@@ -209,7 +209,7 @@
       ],
       "responses": [
         "How about making a student dashboard for IBA? That'll surely impress your sir!",
-        "Build a resume generator web app \u2014 clean, stylish, and practical!",
+        "Build a resume generator web app — clean, stylish, and practical!",
         "Why not make a smart quiz bot that gives coding MCQs? Use Python + Tkinter or React!"
       ]
     },
@@ -222,8 +222,8 @@
         "What is null pointer exception?"
       ],
       "responses": [
-        "Segmentation fault means you accessed memory incorrectly \u2014 often in C/C++.",
-        "Syntax error? You probably missed a bracket or semicolon. Let\u2019s fix it!",
+        "Segmentation fault means you accessed memory incorrectly — often in C/C++.",
+        "Syntax error? You probably missed a bracket or semicolon. Let’s fix it!",
         "Infinite loops happen when the condition never turns false. Want to test one together?",
         "Null pointer exception = using something that doesn't exist yet. Classic OOP error."
       ]
@@ -237,8 +237,8 @@
         "This is frustrating"
       ],
       "responses": [
-        "You've come this far, Anas \u2014 don\u2019t stop now! Great things take time \ud83d\udca5",
-        "Every bug fixed is a level up. You\u2019re not just coding, you're becoming legendary.",
+        "You've come this far, Anas — don’t stop now! Great things take time ✨",
+        "Every bug fixed is a level up. You’re not just coding, you're becoming legendary.",
         "You're doing amazing. This chatbot itself is proof of your skills!"
       ]
     },
@@ -251,9 +251,9 @@
         "Any advice for programming tests?"
       ],
       "responses": [
-        "Practice writing code by hand \u2014 especially loops and recursion!",
+        "Practice writing code by hand — especially loops and recursion!",
         "Focus on problem-solving. Don't memorize, understand.",
-        "Group study with smart friends (or this chatbot \ud83d\ude09) can really help!"
+        "Group study with smart friends (or this chatbot 😉) can really help!"
       ]
     },
     {
@@ -283,8 +283,8 @@
         "Catch you later"
       ],
       "responses": [
-        "Take care, Anas! Chat soon \ud83d\udc4b",
-        "Bye! Have an awesome day \ud83d\udcab",
+        "Take care, Anas! Chat soon 👋",
+        "Bye! Have an awesome day ✨",
         "Goodbye! I'm here whenever you need me."
       ]
     },
@@ -298,7 +298,7 @@
         "Thanks a lot"
       ],
       "responses": [
-        "You're always welcome, Anas! \ud83d\ude0a",
+        "You're always welcome, Anas! 😊",
         "Glad I could help!",
         "Anytime! Let me know if you need anything else."
       ]
@@ -376,9 +376,9 @@
         "Life is hard"
       ],
       "responses": [
-        "I'm really sorry you're feeling this way, Anas. I'm always here for you. \u2764\ufe0f",
+        "I'm really sorry you're feeling this way, Anas. I'm always here for you. ❤️",
         "Want to talk about it? I'm listening.",
-        "You're not alone. Take a breath \u2014 we\u2019ll get through it."
+        "You're not alone. Take a breath — we’ll get through it."
       ]
     },
     {
