@@ -18,6 +18,8 @@ import wikipedia
 import requests
 import datetime as dt
 import re
+from pathlib import Path
+from spacy.tokens import DocBin
 
 def contains_math_expression(text):
     cleaned = re.sub(r'[^\d\+\-\*/\(\)\.\s]', '', text)
@@ -67,6 +69,18 @@ class ChatbotAssistant:
             self.user_name = None # Variable to store the user's name
             # Load the spaCy model for NER
             self.nlp = spacy.load("en_core_web_md")
+            
+            # Enhanced entity tracking
+            self.entity_memory = {}
+            self.context_history = []
+            self.conversation_context = {
+                'PERSON': [],
+                'ORG': [],
+                'GPE': [],
+                'DATE': [],
+                'TIME': [],
+                'TOPIC': []
+            }
 
     @staticmethod
     def tokenize_and_lemmatize(text):
@@ -215,6 +229,92 @@ class ChatbotAssistant:
 
         # Return the response and the identified entities
         return response, doc.ents
+
+    def _update_entity_memory(self, entity):
+        """Track entity frequency and context"""
+        if entity.label_ not in self.entity_memory:
+            self.entity_memory[entity.label_] = {}
+            
+        if entity.text not in self.entity_memory[entity.label_]:
+            self.entity_memory[entity.label_][entity.text] = {
+                'count': 0,
+                'last_mentioned': None,
+                'contexts': []
+            }
+            
+        self.entity_memory[entity.label_][entity.text]['count'] += 1
+        self.entity_memory[entity.label_][entity.text]['last_mentioned'] = dt.datetime.now()
+        self.entity_memory[entity.label_][entity.text]['contexts'].append(str(entity.sent))
+
+    def process_entities(self, doc):
+        """Process and track entities"""
+        entities = {
+            'PERSON': [],
+            'ORG': [],
+            'GPE': [],
+            'DATE': [],
+            'PRODUCT': [],
+            'EVENT': []
+        }
+        
+        for ent in doc.ents:
+            if ent.label_ in entities:
+                entities[ent.label_].append(ent.text)
+                self._update_entity_memory(ent)
+        
+        return entities
+
+class NERTrainer:
+    def __init__(self, model=None):
+        self.nlp = spacy.load(model) if model else spacy.blank("en")
+        
+        # Add NER pipe if it doesn't exist
+        if "ner" not in self.nlp.pipe_names:
+            ner = self.nlp.create_pipe("ner")
+            self.nlp.add_pipe("ner", last=True)
+        
+    def prepare_training_data(self, training_data):
+        """
+        training_data format:
+        [
+            ("Apple is looking at buying U.K. startup for $1 billion", {
+                "entities": [(0, 5, "ORG"), (27, 31, "GPE"), (44, 54, "MONEY")]
+            }),
+            ...
+        ]
+        """
+        db = DocBin()
+        for text, annotations in training_data:
+            doc = self.nlp.make_doc(text)
+            ents = []
+            for start, end, label in annotations["entities"]:
+                span = doc.char_span(start, end, label=label)
+                if span:
+                    ents.append(span)
+            doc.ents = ents
+            db.add(doc)
+        return db
+
+    def train(self, training_data, output_dir, n_iter=30):
+        """Train the NER model"""
+        Path(output_dir).mkdir(exist_ok=True)
+        
+        # Convert training data to spaCy format
+        train_db = self.prepare_training_data(training_data)
+        train_db.to_disk(Path(output_dir) / "train.spacy")
+        
+        # Configure training
+        config = {
+            "paths": {
+                "train": str(Path(output_dir) / "train.spacy"),
+                "dev": str(Path(output_dir) / "train.spacy")
+            },
+            "system": {"gpu_allocator": "pytorch"},
+            "corpora": {"train": {"path": str(Path(output_dir) / "train.spacy")}}
+        }
+        
+        # Train the model
+        spacy.cli.train("config.cfg", output_dir, overrides=config)
 
 def get_stocks():
     tickers = ['AAPL', 'META', 'NVDA', 'MSFT', 'GOOGL']
