@@ -671,12 +671,66 @@ def solve_math(expression=None):
         return f"The result is: {result}"
     except:
         return "❌ Invalid math expression. Try again."
+    
+tomtom_api = 'ZZaSjIRF5HdKxjuEAQEKAqyfu7Zgxzpx'
+    
+def geocode_address(address, api_key):
+    url = f"https://api.tomtom.com/search/2/geocode/{address}.json"
+    params = {"key": api_key}
+    res = requests.get(url, params=params)
+    data = res.json()
+    position = data['results'][0]['position']
+    return position['lat'], position['lon']
+
+def get_traffic_info(lat, lon, api_key):
+    url = "https://api.tomtom.com/traffic/services/4/flowSegmentData/relative0/10/json"
+    params = {
+        "point": f"{lat},{lon}",
+        "key": api_key
+    }
+    res = requests.get(url, params=params)
+    if res.status_code == 200:
+        return res.json()['flowSegmentData']
+    else:
+        return None
+    
+def get_location():
+    res = requests.get("https://ipwho.is/")
+    data = res.json()
+    if data['success']:
+        lat = data['latitude']
+        lon = data['longitude']
+        city = data['city']
+        return lat, lon, city
+    else:
+        raise Exception("Location fetch failed")
+
+def get_traffic():
+    address = input('Where would you want the traffic information of?: ')
+    lat, lon = geocode_address(address, tomtom_api)
+    traffic = get_traffic_info(lat, lon, tomtom_api)
+    if traffic:
+        current_speed = traffic['currentSpeed']
+        free_flow_speed = traffic['freeFlowSpeed']
+        congestion_level = ""
+
+        if current_speed >= 0.9 * free_flow_speed:
+            congestion_level = "Traffic is flowing smoothly."
+        elif current_speed >= 0.6 * free_flow_speed:
+            congestion_level = "There is moderate traffic."
+        else:
+            congestion_level = "Heavy traffic or congestion detected."
+
+        response = congestion_level + f" Current speed is {current_speed}."
+    else:
+        response = "Could not get traffic info."
+    return response
 
 if __name__ == '__main__':
     wiki_mode = False
     last_topic = None
 
-    assistant = ChatbotAssistant('intents.json', function_mappings={'stocks': get_stocks, 'wiki': search_wikipedia, 'weather': get_weather, 'math': solve_math})
+    assistant = ChatbotAssistant('intents.json', function_mappings={'stocks': get_stocks, 'wiki': search_wikipedia, 'weather': get_weather, 'math': solve_math, 'traffic': get_traffic})
 
     #assistant.load_model('chatbot_model.pth', 'dimensions.json')
     assistant.parse_intents()
